@@ -298,7 +298,7 @@ float distance_triangle(vec2 p, vec2 a, vec2 b, vec2 c)
 
 	layout (binding = 0) uniform fs_params {
 		vec2 u_texture_size;
-		int no_discard;
+		int u_alpha_discard;
 	};
 
 	@include_block blend
@@ -338,7 +338,7 @@ float distance_triangle(vec2 p, vec2 a, vec2 b, vec2 c)
 		c *= v_alpha;
 		vec2 screen_position = (v_posH + vec2(1,1)) * 0.5;
 		c = shader(c, v_pos, v_uv, screen_position, v_user);
-		if (no_discard == 0 && c.a == 0) discard;
+		if (u_alpha_discard != 0 && c.a == 0) discard;
 		result = c;
 	}
 @end
