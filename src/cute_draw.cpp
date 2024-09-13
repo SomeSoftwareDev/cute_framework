@@ -2349,7 +2349,7 @@ void cf_render_settings_push_texture(const char* name, CF_Texture texture)
 	material_set_texture_fs(draw->material, name, texture);
 }
 
-void cf_render_settings_push_alpha_discard(bool true_enable_alpha_discard)
+void cf_render_settings_set_alpha_discard(bool true_enable_alpha_discard)
 {
 	draw->alpha_discard = true_enable_alpha_discard ? 1 : 0;
 }
